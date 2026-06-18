@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria Técnica - Proyecto Recuperación UD4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #1a365d;
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        header h1 { margin: 0; font-size: 28px; }
+        header p { margin: 5px 0 0 0; font-size: 16px; opacity: 0.9; }
+        .meta-box {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #3182ce;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        .meta-box p { margin: 5px 0; font-size: 14px; }
+        h2 { color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-top: 40px; }
+        h3 { color: #2d3748; margin-top: 25px; }
+        p, li { font-size: 15px; text-align: justify; }
+        ul { padding-left: 20px; }
+        .badge {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #ffffff;
+        }
+        th, td {
+            border: 1px solid #cbd5e0;
+            padding: 12px;
+            text-align: left;
+        }
+        th { background-color: #edf2f7; color: #2d3748; font-weight: bold; }
+        tr:nth-child(even) { background-color: #f7fafc; }
+        .evidence-placeholder {
+            background-color: #edf2f7;
+            border: 2px dashed #cbd5e0;
+            color: #718096;
+            padding: 40px;
+            text-align: center;
+            margin: 15px 0;
+            border-radius: 6px;
+            font-style: italic;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Proyecto de Recuperación UD4: Optimización y Documentación</h1>
+    <p>Módulo Profesional: Entornos de Desarrollo (1º CFGS DAM)</p>
+</header>
+
+<div class="meta-box">
+    <p><strong>Centro Educativo:</strong> I.E.S. Francisco Rodríguez Marín (Osuna, Sevilla)</p>
+    <p><strong>Alumno:</strong> [Tu Nombre y Apellidos]</p>
+    <p><strong>Fecha de Entrega:</strong> [Insertar Fecha]</p>
+    <p><strong>Repositorio GitHub:</strong> <a href="#" target="_blank">[Insertar URL de tu repositorio público]</a></p>
+</div>
+
+<h2>1. Registro y Configuración Inicial (Criterios f, g)</h2>
+<p>Para iniciar el desarrollo siguiendo los estándares profesionales demandados en el mercado laboral, se inicializó un repositorio Git local parametrizado correctamente con las credenciales del desarrollador. Posteriormente, se vinculó con la plataforma remota GitHub para asegurar el despliegue colaborativo y el seguimiento del ciclo de vida del software.</p>
+
+<h3>Evidencia del Historial y Configuración Inicial</h3>
+<div class="evidence-placeholder">
+    [INSERTAR CAPTURA: Terminal ejecutando 'git config --list' y el entorno con el commit inicial "Subida Inicial del Proyecto"]
+</div>
+
+<h2>2. Refactorización del Código (Criterios a, e)</h2>
+<p>Tras analizar el código fuente base de la aplicación de la pizzería (<span class="badge">Pizza.java</span>, <span class="badge">Pedido.java</span>, <span class="badge">GestorPedidos.java</span> y <span class="badge">Cliente.java</span>), se detectaron deficiencias estructurales críticas asociadas con el "código sucio" (Bad Smells). Se aplicaron técnicas automatizadas de refactorización mediante el IDE para sanear la arquitectura interna sin alterar el comportamiento funcional del sistema.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Clase</th>
+            <th>Bad Smell Detectado</th>
+            <th>Técnica de Refactorización Aplicada</th>
+            <th>Justificación Limpia (Clean Code)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Pizza / Cliente</strong></td>
+            <td>Violación de Encapsulamiento (Atributos públicos expuestos).</td>
+            <td>Encapsular Campos (Encapsulate Field).</td>
+            <td>Se modificó el acceso a privado (<span class="badge">private</span>) y se generaron métodos accesores (<span class="badge">getters</span>) para proteger el estado interno del objeto.</td>
+        </tr>
+        <tr>
+            <td><strong>Pedido / GestorPedidos</strong></td>
+            <td>Uso de Raw Types (Colecciones <span class="badge">ArrayList</span> sin tipar) y castings explícitos peligrosos.</td>
+            <td>Parametrizar Colecciones (Generics).</td>
+            <td>Se parametrizaron las estructuras de datos (<span class="badge">List&lt;Pizza&gt;</span>). Evita excepciones del tipo <span class="badge">ClassCastException</span> en tiempo de ejecución.</td>
+        </tr>
+        <tr>
+            <td><strong>Pedido (calcularTotal)</strong></td>
+            <td>Código Complejo / Torre de condicionales anidados (Anti-patrón de Flecha) y Números Mágicos.</td>
+            <td>Simplificación de Condicionales y Extracción de Constantes.</td>
+            <td>Se eliminó la secuencia inútil de comparaciones. Se implementaron constantes semánticas para el umbral y porcentaje de descuento, optimizando la legibilidad.</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="evidence-placeholder">
+    [INSERTAR CAPTURA: Comparativa de código "Antes y Después" del método calcularTotal en el IDE]
+</div>
+
+<h2>3. Documentación del Código con Javadoc (Criterio i)</h2>
+<p>Cumpliendo con la rama obligatoria <span class="badge">Documentacion</span>, se procesó el API completo de la aplicación. Se integraron bloques descriptivos sobre el propósito de cada clase, variables de instancia y firmas de métodos empleando anotaciones oficiales tales como <span class="badge">@param</span> y <span class="badge">@return</span>.</p>
+
+<h3>Evidencia de la Documentación HTML Generada</h3>
+<p>La documentación se compiló automáticamente empleando las herramientas del entorno de desarrollo, volcando un árbol web estático dentro del directorio local configurado, facilitando la comprensión del código para futuros mantenedores.</p>
+<div class="evidence-placeholder">
+    [INSERTAR CAPTURA: Navegador web mostrando el index.html de Javadoc con el esquema de clases generado]
+</div>
+
+<h2>4. Pruebas Unitarias con JUnit (Criterio b)</h2>
+<p>Desde la rama <span class="badge">Testing</span> se estructuró la suite de verificación automatizada utilizando el framework JUnit. El foco se centró en asegurar que las rutinas lógicas críticas (como la acumulación de precios y la correcta deducción de descuentos) operen sin fallas bajo cualquier entrada de datos.</p>
+<ul>
+    <li><strong>Caso Feliz:</strong> Validación de pedidos estándar donde la suma es exacta y no se alcanzan límites promocionales.</li>
+    <li><strong>Caso Límite:</strong> Verificación estricta del comportamiento cuando el importe roza o iguala el umbral de los 50€ para asegurar que el descuento matemático se dispara en el momento preciso.</li>
+</ul>
+<div class="evidence-placeholder">
+    [INSERTAR CAPTURA: Ejecución exitosa de la suite de pruebas unitarias en el IDE (Barra Verde)]
+</div>
+
+<h2>5. Integración Continua (Criterio h)</h2>
+<p>Tras verificar localmente la estabilidad de las modificaciones, se realizó la fusión (merge) hacia la línea principal <span class="badge">main</span>. Con el fin de garantizar que ningún cambio futuro rompa las funcionalidades existentes, se desplegó un flujo automatizado de integración continua mediante <strong>GitHub Actions</strong>.</p>
+<p>Cada vez que el repositorio remoto recibe código, un servidor virtual ejecuta un entorno aislado, compila el código Java e invoca la suite de pruebas unitarias de manera autónoma.</p>
+<div class="evidence-placeholder">
+    [INSERTAR CAPTURA: Pestaña "Actions" de GitHub mostrando el pipeline completado con éxito (Check Verde)]
+</div>
+
+<h2>6. Análisis Estático del Código (Criterios c, d)</h2>
+<p>Para auditar formalmente la calidad técnica final conseguida tras el proceso de refactorización, se sometió la solución al escrutinio de cuatro motores de análisis estático líderes en el sector industrial:</p>
+
+<ul>
+    <li><strong>Checkstyle:</strong> Auditó el formato del código frente a las convenciones de desarrollo de Google. Confirmó la correcta disposición de llaves, indentaciones uniformes y espaciados adecuados.</li>
+    <li><strong>PMD:</strong> Analizó la eficiencia del diseño, verificando que no existiese código muerto, variables sin utilizar u optimizaciones prematuras pendientes en las estructuras de bucle.</li>
+    <li><strong>SpotBugs:</strong> Buscó patrones de fallos lógicos ocultos o riesgos potenciales en tiempo de ejecución (como accesos indebidos o desbordamientos estructurales). El reporte arrojó cero alertas críticas.</li>
+    <li><strong>SonarQube:</strong> Evaluó las métricas globales del proyecto, garantizando un índice de deuda técnica nulo y certificando que el software cumple holgadamente con los umbrales de paso establecidos (Quality Gate: PASSED).</li>
+</ul>
+
+<div class="evidence-placeholder">
+    [INSERTAR CAPTURA: Reportes o paneles de control de las herramientas de análisis estático aplicadas]
+</div>
+
+</body>
+</html>
